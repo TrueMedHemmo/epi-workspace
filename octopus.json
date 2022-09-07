@@ -1243,7 +1243,7 @@
         },
         {
           "type": "execute",
-          "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
+          "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build -- --domain=demo.epi.tm"
         },
         {
             "type": "execute",

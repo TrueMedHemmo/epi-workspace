@@ -509,7 +509,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier"
+                    "cmd": "cd themes/blue-fluorite-theme && npm run build-dossier -- --domain=demo.epi.tm"
                 }
             ]
         },
@@ -561,7 +561,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd cardinal && npm run build-dossier"
+                    "cmd": "cd cardinal && npm run build-dossier -- --domain=demo.epi.tm"
                 }
             ]
         },
@@ -570,7 +570,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd webcardinal && npm run build"
+                    "cmd": "cd webcardinal && npm run build -- --domain=demo.epi.tm"
                 }
             ]
         },
@@ -580,7 +580,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd themes/citrus-theme && npm run build-dossier"
+                    "cmd": "cd themes/citrus-theme && npm run build-dossier -- --domain=demo.epi.tm"
                 }
             ]
         },
@@ -590,7 +590,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd themes/clear-sky-theme && npm run build-dossier"
+                    "cmd": "cd themes/clear-sky-theme && npm run build-dossier -- --domain=demo.epi.tm"
                 }
             ]
         },
@@ -600,7 +600,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd themes/epi-theme && npm run build-dossier"
+                    "cmd": "cd themes/epi-theme && npm run build-dossier -- --domain=demo.epi.tm"
                 }
             ]
         },
@@ -610,7 +610,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd leaflet-ssapp && npm run build"
+                    "cmd": "cd leaflet-ssapp && npm run build -- --domain=demo.epi.tm"
                 },
                 {
                     "type": "copySeed",
@@ -670,7 +670,7 @@
             "actions": [
                 {
                     "type": "execute",
-                    "cmd": "cd dsu-fabric-ssapp && npm run build"
+                    "cmd": "cd dsu-fabric-ssapp && npm run build  -- --domain=demo.epi.tm"
                 },
                 {
                     "type": "copySeed",
@@ -901,7 +901,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd webcardinal && npm run build"
+                    "cmd": "cd webcardinal && npm run build -- --domain=demo.epi.tm"
                 },
                 {
                     "type": "execute",
@@ -1284,15 +1284,7 @@
                 },
                 {
                     "type": "execute",
-                    "cmd": "cd delayv-auth-feat-ssapp && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build"
-                },
-                {
-                    "type": "execute",
-                    "cmd": "cd uniqode-auth-feat-ssapp && npm run build"
+                    "cmd": "cd truemedhemo-auth-feat-ssapp && npm run build  -- --domain=demo.epi.tm"
                 },
                 {
                     "type": "execute",

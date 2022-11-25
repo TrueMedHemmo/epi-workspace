@@ -36,26 +36,26 @@ function MainController() {
     let usrAgreedTerms = getCookie("usr_agreed_terms");
     if (!usrAgreedTerms) {
       let welcomeText = getTranslation("onboarding_welcome");
-      let termsText = getTranslation("terms_content");
-      document.querySelector(".welcome-container").innerHTML = `
-      <span>${welcomeText}</span>
+      document.querySelector(".welcome-container").innerHTML = `<span>${welcomeText}</span>`;
+      document.querySelector(".terms-content-container").innerHTML = `
       <div class="terms-container">
-        <span>${termsText}</span>
+        <span class="extra-text" translate="disagree_extra_text"></span>
+        <iframe style="width: 100%; height: 100%; margin-bottom: 24px; border: 0" src="https://app.termly.io/document/terms-of-use-for-website/76a94ec4-766a-4a6a-b7fe-c68834af6811"></iframe>  
         <div class="terms-buttons-container">
-          <div class="terms-button disagree" onclick="mainController.submitTerms(false)">${getTranslation("disagree")}</div>
-          <div class="terms-button agree" onclick="mainController.submitTerms(true)">${getTranslation("agree")}</div>
+          <div class="scan-button terms-button disagree" onclick="mainController.submitTerms(false)">${getTranslation("disagree")}</div>
+          <div class="scan-button terms-button agree" onclick="mainController.submitTerms(true)">${getTranslation("agree")}</div>
         </div>
       </div>`;
       document.querySelector(".content-container").classList.add("hiddenElement");
       document.querySelector(".explain-container").classList.add("hiddenElement");
       document.querySelector(".scan-button-container").classList.add("hiddenElement");
-      document.querySelector(".bottom-container").classList.add("hiddenElement");
     } else {
       let welcomeText = getTranslation("welcome");
+      document.querySelector(".terms-content-container").classList.add("hiddenElement");
       document.querySelector(".welcome-container").innerHTML = `<span>${welcomeText}</span>`;
       document.querySelector(".content-container").innerHTML = `<div class="icon-div"></div>`;
-      document.querySelector(".more-options-link").innerHTML = `<span> ePI ${environment.appBuildVersion} </span>`;
     }
+    document.querySelector("#app_version_number").innerHTML = `${environment.appBuildVersion}`;
   }
 
   this.submitTerms = function (status) {
@@ -68,15 +68,19 @@ function MainController() {
     goToPage("scan.html")
   }
 
+  this.goHome = function () {
+    goToPage("index.html")
+  }
+
   this.closeModal = function () {
     document.querySelector("#settings-modal").setAttribute('style', 'display:none !important');
   }
   this.showModal = function (key) {
     this.toggleMenu();
-    if (key === "about") {
-      window.open("https://Pharmaledger.eu", "_blank").focus();
-      return;
-    }
+    /*    if (key === "about") {
+          window.open("https://Pharmaledger.eu").focus();
+          return;
+        }*/
 
     let modal = document.querySelector("#settings-modal");
     modal.setAttribute('style', 'display:flex !important');
@@ -85,12 +89,19 @@ function MainController() {
     let contentKey = key + "_content";
     modal.querySelector(".modal-title").innerHTML = getTranslation(titleKey);
     modal.querySelector(".modal-subtitle").innerHTML = getTranslation(subtitleKey);
-    modal.querySelector(".modal-content").innerHTML = getTranslation(contentKey);
+    let contentElement = modal.querySelector(".modal-content");
+    contentElement.className = "modal-content";
+    contentElement.classList.add(key);
+    contentElement.innerHTML = getTranslation(contentKey);
   }
 
 }
 
 const mainController = new MainController();
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+let epiDomain = urlParams.get("setdomain") || environment.epiDomain;
+let lsEpiDomain = localStorage.setItem("_epiDomain_", epiDomain);
 mainController.checkOnboarding();
 
 window.mainController = mainController;
